@@ -1,0 +1,197 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    background-color: #101820ff;
+
+    font-family: Bahnschrift;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+body {
+    color: white;
+}
+
+:root {
+    --differColor: #006b38ff;
+    --boxShadow: 0px 2px 3px 4px #00000030;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #101820ff;
+    box-shadow: inset 0px 0px 1px 1px var(--differColor);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+/* logo */
+
+#logo {
+    position: fixed;
+    width: 100px;
+    height: 5vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin: 10px 10px;
+    z-index: 1;
+}
+/* poster */
+.poster {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.poster h1 {
+    background-color: transparent;
+    font-size: 3rem;
+    text-shadow: 0px 4px 2px black;
+}
+
+/* **********News Navigation********* */
+.newsNavigation {
+    display: flex;
+    text-align: center;
+    margin: 20px 0px;
+    justify-content: center;
+    overflow-x: scroll;
+}
+
+.newsNavigation::-webkit-scrollbar {
+    display: none;
+}
+
+.newsNavigation a {
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 6px 10px;
+    margin: 0px 10px;
+    transition-property: all;
+    transition-timing-function: linear;
+    transition-delay: 0.2s;
+    transition-duration: 0.4s;
+    border-bottom: 4px solid transparent;
+}
+
+.newsNavigation a:hover {
+    border-bottom: 4px solid var(--differColor);
+    font-size: 1.2rem;
+    color: var(--differColor);
+}
+
+#ScienceBtn {
+    border-bottom: 4px solid var(--differColor);
+    font-size: 1.2rem;
+    color: var(--differColor);
+}
+
+/********News Div*******/
+.newsDiv {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 10px 10%;
+}
+
+.newsOuterDiv {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px 0px;
+    box-shadow: var(--boxShadow);
+}
+
+.newsLeftDiv {
+    width: 30%;
+    box-shadow: inset 0px 0px 2px 2px white;
+}
+
+.newsRightDiv {
+    width: 70%;
+    padding: 10px;
+}
+
+.newsRightDiv small {
+    margin: 10px 0px;
+    color: var(--differColor);
+}
+
+.newsRightDiv h1 {
+    color: var(--differColor);
+    margin: 5px 0px;
+    text-shadow: 0px 2px 2px black;
+}
+
+.newsRightDiv p {
+    margin: 2px 0px;
+}
+
+.newsRightDiv p:hover {
+    text-decoration: underline;
+}
+
+.newsLeftDiv img {
+    width: 100%;
+    filter: drop-shadow(0px 0px 2px var(--differColor));
+    height: 100%;
+    transform: skewY(11deg);
+}
+
+#Science {
+    display: flex;
+}
+
+/* /**********Footer***********/
+footer {
+    text-align: center;
+    margin: 10px 0px;
+}
+
+footer h2 {
+    color: var(--differColor);
+}
+
+footer i,
+footer span {
+    color: white;
+}
+
+/* Responsive */
+@media screen and (min-device-width: 200px) and (max-device-width: 1024px) {
+    .poster h1 {
+        font-size: 2rem;
+    }
+
+    .newsDiv {
+        width: 90%;
+        margin: 10px 5%;
+    }
+
+    .newsLeftDiv {
+        width: 100%;
+    }
+
+    .newsRightDiv {
+        width: 100%;
+        padding: 10px;
+    }
+}

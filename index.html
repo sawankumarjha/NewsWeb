@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <title>JhajiNews</title>
+
+
+    </head>
+
+    <body>
+        <!-- *************Logo************* -->
+        <img src="logo.png" alt="" id="logo">
+        <!-- **********Poster********** -->
+        <div class="poster" id="poster">
+            <h1>Latest News</h1>
+        </div>
+        <!-- /*****News Navigation********/ -->
+        <div class="newsNavigation">
+            <a id="ScienceBtn">Science</a>
+            <a id="TechnologyBtn">Technology</a>
+            <a id="HealthBtn">Health</a>
+            <a id="SportsBtn">Sports</a>
+            <a id="BusinessBtn">Business</a>
+            <a id="EntertainmentBtn">Entertainment</a>
+        </div>
+        <!--Science-->
+        <div class="newsDiv" id="Science"></div>
+
+        <footer>
+            <h2><i class="fa fa-copyright" aria-hidden="true"></i> <span id="date"></span> All Rights Reserved</h2>
+        </footer>
+        <script>
+
+
+            $(document).ready(function () {
+
+                let year = document.getElementById('date');
+                let Science = document.getElementById('Science');
+                let Technology = document.getElementById('Technology');
+                let Health = document.getElementById('Health');
+                let Sports = document.getElementById('Sports');
+                let Business = document.getElementById('Business');
+                let Entertainment = document.getElementById('Entertainment');
+                let poster = document.getElementById('poster');
+                let ApiKey = '101f8ed65d054da898d5a531bb835797';
+                let category = ['science', 'technology', 'health', 'sports', 'business', 'entertainment',];
+                let articlesArray = [];
+
+                // footer Dynamic
+                let dt = new Date();
+                year.innerHTML = dt.getFullYear();
+
+                function Data(num) {
+
+                    fetch(`http://newsapi.org/v2/top-headlines?country=in&category=${category[num]}&apiKey=${ApiKey}`).then((adata) => {
+                        return adata.json();
+                    }).then((actdata) => {
+                        articlesArray = actdata.articles;
+                        poster.style.background = `linear-gradient(to top, #101820FF, transparent), url(${actdata.articles[Math.floor(Math.random() * actdata.articles.length)].urlToImage})`;
+                        poster.style.backgroundSize = "cover";
+                        poster.style.backgroundPosition = "center";
+                        poster.style.backgroundRepeat = "no-repeat";
+                        poster.childNodes['1'].innerHTML = `${actdata.articles[0].title}`;
+                        Science.innerHTML = "";
+                        for (i = 0; i < articlesArray.length; i++) {
+                            Science.innerHTML += ` <div class="newsOuterDiv">
+                <div class="newsLeftDiv">
+                    <img src='${articlesArray[i].urlToImage}'>
+                </div>
+                <div class="newsRightDiv">
+                    <h1>${articlesArray[i].title}</h1>
+                    <a href=${articlesArray[i].url}><p>${articlesArray[i].description}</p></a>
+                    <small>${articlesArray[i].publishedAt}</small >
+                </div >
+            </div >`;
+                        }
+                    });
+                }
+                Data(0);
+                $('#ScienceBtn').click(() => {
+                    Data(0);
+                    $('#ScienceBtn').css({
+                        borderBottom: '4px solid var(--differColor)',
+                        fontSize: '1.2rem',
+                        color: 'var(--differColor)'
+                    });
+                    $('#TechnologyBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#HealthBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#SportsBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#BusinessBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#EntertainmentBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+
+
+
+                });
+                $('#TechnologyBtn').click(() => {
+
+                    Data(1);
+                    $('#TechnologyBtn').css({
+                        borderBottom: '4px solid var(--differColor)',
+                        fontSize: '1.2rem',
+                        color: 'var(--differColor)'
+                    });
+                    $('#ScienceBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#HealthBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#SportsBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#BusinessBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#EntertainmentBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+
+                });
+                $('#HealthBtn').click(() => {
+                    Data(2);
+                    $('#HealthBtn').css({
+                        borderBottom: '4px solid var(--differColor)',
+                        fontSize: '1.2rem',
+                        color: 'var(--differColor)'
+                    });
+                    $('#ScienceBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#TechnologyBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#SportsBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#BusinessBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#EntertainmentBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                });
+                $('#SportsBtn').click(() => {
+                    Data(3);
+                    $('#SportsBtn').css({
+                        borderBottom: '4px solid var(--differColor)',
+                        fontSize: '1.2rem',
+                        color: 'var(--differColor)'
+                    });
+                    $('#ScienceBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#TechnologyBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#HealthBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#BusinessBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#EntertainmentBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                });
+                $('#BusinessBtn').click(() => {
+                    Data(4);
+                    $('#BusinessBtn').css({
+                        borderBottom: '4px solid var(--differColor)',
+                        fontSize: '1.2rem',
+                        color: 'var(--differColor)'
+                    });
+                    $('#ScienceBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#TechnologyBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#SportsBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#HealthBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#EntertainmentBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                });
+                $('#EntertainmentBtn').click(() => {
+                    Data(5);
+                    $('#EntertainmentBtn').css({
+                        borderBottom: '4px solid var(--differColor)',
+                        fontSize: '1.2rem',
+                        color: 'var(--differColor)'
+                    });
+                    $('#ScienceBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#TechnologyBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#SportsBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#BusinessBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                    $('#HealthBtn').css({
+                        borderBottom: '4px solid transparent',
+                        fontSize: '1.3rem',
+                        color: 'white'
+                    });
+                });
+
+            });
+
+        </script>
+    </body>
+
+</html>
