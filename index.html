@@ -12,7 +12,10 @@
 
     </head>
 
-    <body>
+    <body onload=unLoad()>
+        <div class="loader" id="load">
+            <img src="loader.gif" alt="Not Found">
+        </div>
         <!-- *************Logo************* -->
         <img src="logo.png" alt="" id="logo">
         <!-- **********Poster********** -->
@@ -36,7 +39,10 @@
         </footer>
         <script>
 
+     function unLoad() {
+                document.getElementById('load').style.display = 'none';
 
+            }
             $(document).ready(function () {
 
                 let year = document.getElementById('date');
