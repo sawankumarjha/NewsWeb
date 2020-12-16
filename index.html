@@ -50,6 +50,7 @@
                 let ApiKey = '101f8ed65d054da898d5a531bb835797';
                 let category = ['science', 'technology', 'health', 'sports', 'business', 'entertainment',];
                 let articlesArray = [];
+                let ran;
 
                 // footer Dynamic
                 let dt = new Date();
@@ -61,11 +62,12 @@
                         return adata.json();
                     }).then((actdata) => {
                         articlesArray = actdata.articles;
-                        poster.style.background = `linear-gradient(to top, #101820FF, transparent), url(${actdata.articles[Math.floor(Math.random() * actdata.articles.length)].urlToImage})`;
+                         ran = Math.floor(Math.random() * actdata.articles.length);
+                        poster.style.background = `linear-gradient(to top, #101820FF, transparent), url(${actdata.articles[ran].urlToImage})`;
                         poster.style.backgroundSize = "cover";
                         poster.style.backgroundPosition = "center";
                         poster.style.backgroundRepeat = "no-repeat";
-                        poster.childNodes['1'].innerHTML = `${actdata.articles[0].title}`;
+                        poster.childNodes['1'].innerHTML = `${actdata.articles[ran].title}`;
                         Science.innerHTML = "";
                         for (i = 0; i < articlesArray.length; i++) {
                             Science.innerHTML += ` <div class="newsOuterDiv">
