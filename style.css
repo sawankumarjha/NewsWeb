@@ -40,6 +40,22 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+/* loader */
+.loader {
+    display: flex;
+    position: fixed;
+    top: 0px;
+    content: "";
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #101820ff;
+    z-index: 1;
+}
+.loader img {
+    width: 50px;
+}
 /* logo */
 
 #logo {
@@ -199,5 +215,10 @@ footer span {
     }
     .newsNavigation {
         justify-content: left;
+    }
+}
+@media screen and (min-device-width: 200px) and (max-device-width: 1024px) {
+    .newsNavigation {
+        justify-content: center;
     }
 }
